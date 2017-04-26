@@ -1,1 +1,0 @@
-export const vector2 = msg => msg.toUpperCase()

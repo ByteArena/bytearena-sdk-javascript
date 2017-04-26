@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/",
-    "build-node": "npm run lint && BABEL_ENV=production babel --out-dir lib src/",
-    "build-browser": "npm run lint && rollup -c rollup.config.js",
-    "build": "npm run build-node && npm run build-browser",
+    "build-node": "BABEL_ENV=production babel --out-dir lib/node src/node",
+    "build-browser": "rollup -c rollup.config.js",
+    "build": "npm run clean && npm run lint && npm run build-node && npm run build-browser",
+    "clean": "rm -Rf lib/*",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -32,7 +33,6 @@
     "eslint": "^3.19.0",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-babili": "^3.0.0",
-    "rollup-plugin-multi-entry": "^2.0.1"
+    "rollup-plugin-babili": "^3.0.0"
   }
 }

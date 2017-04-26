@@ -2,11 +2,11 @@
   "name": "bytearena-sdk",
   "version": "0.0.0",
   "description": "Byte Arena SDK",
-  "main": "src/index.js",
+  "main": "lib/commonjs/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/",
-    "build-node": "BABEL_ENV=production babel --out-dir lib/node src/node",
+    "build-node": "BABEL_ENV=production babel --no-babelrc --presets es2015 --out-dir lib/commonjs src/",
     "build-browser": "rollup -c rollup.config.js",
     "build": "npm run clean && npm run lint && npm run build-node && npm run build-browser",
     "clean": "rm -Rf lib/*",
@@ -22,9 +22,6 @@
     "url": "https://github.com/netgusto/bytearena-sdk-javascript/issues"
   },
   "homepage": "https://github.com/netgusto/bytearena-sdk-javascript",
-  "browser": {
-    "./src/node/index.js": "./src/browser/index.js"
-  },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",

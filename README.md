@@ -1,2 +1,2 @@
 # bytearena-sdk-javascript
-Byte Arena SDK - Javascript implementation
+Byte Arena SDK - JavaScript implementation

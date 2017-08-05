@@ -1,4 +1,5 @@
-import dgram from 'dgram';
+import net from 'net';
+import readline from 'readline';
 
 export const connect = (port, host, agentid) => {
 
@@ -10,38 +11,39 @@ export const connect = (port, host, agentid) => {
         };
     };
 
-    return new Promise(function(resolve, reject) {
+    function onConnect(client, resolve, reject) {
 
-        const client = dgram.createSocket('udp4');
         const json = JSON.stringify(wrapInTransport("Handshake", {
             Greetings: 'Hello from ' + agentid + ' !'
         }));
 
-        const message = new Buffer(json);
-
-        client.send(message, 0, message.length, port, host, function(err, nbbytes) {
-
+        client.write(json + "\n", "utf8", function() {
             // handshake successful
 
-            let cbktickrequested = function() {}; // no-op
+            readline.createInterface(client, client)
+                .on('line', function(data) {
 
-            client.on('message', function(data, rinfo) {
-                const json = data.toString();
-                const decoded = JSON.parse(json);
+                    const json = data.toString();
+                    const decoded = JSON.parse(json);                
 
-                if('Method' in decoded) {
-                    // Request emitted by server; not handling session yet (one way messaging, like pubsub)
-                    if(decoded.Method === 'tick') {
-                        const tickturn = parseInt(decoded.Arguments[0]);
-                        const senses = decoded.Arguments[1];
-                        cbktickrequested(tickturn, senses);
+                    if('Method' in decoded) {
+                        // Request emitted by server; not handling session yet (one way messaging, like pubsub)
+                        if(decoded.Method === 'tick') {
+                            const tickturn = parseInt(decoded.Arguments[0]);
+                            const senses = decoded.Arguments[1];
+                            cbktickrequested(tickturn, senses);
+                        } else {
+                            throw new Error('Undefined Method requested from server : ' + decoded.Method);
+                        }
                     } else {
-                        throw new Error('Undefined Method requested from server : ' + decoded.Method);
+                        throw new Error('Invalid message received from server :' + json);
                     }
-                } else {
-                    throw new Error('Invalid message received from server :' + json);
-                }
-            });
+                })
+                .on('close', function() {
+                    // TODO: stop agent
+                });
+
+            let cbktickrequested = function() {}; // no-op
 
             resolve({
                 sendMutations(turn, mutations) {
@@ -51,7 +53,7 @@ export const connect = (port, host, agentid) => {
                             Mutations: mutations
                         }));
 
-                        client.send(json, 0, json.length, port, host, function(err, nbbytes) {
+                        client.write(json + "\n", "utf8", function(err) {
                             resolve();
                         });
                     });
@@ -59,7 +61,12 @@ export const connect = (port, host, agentid) => {
                 onTick(cbk) {
                     cbktickrequested = cbk;
                 }
-            });
+            });            
         });
+    }
+
+    return new Promise(function(resolve, reject) {
+        const client = new net.Socket();
+        client.connect(port, host, onConnect.bind(null, client, resolve, reject));
     });
 };

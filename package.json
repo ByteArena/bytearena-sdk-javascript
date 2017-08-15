@@ -2,6 +2,11 @@
   "name": "bytearena",
   "private": true,
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "lerna": "^2.0.0"
+  },
+  "scripts": {
+    "build": "./scripts/build.sh"
   }
 }

@@ -1,3 +1,5 @@
-export number from './number';
-export vector from 'bytearena-sdk-vector2';
-export comm from 'bytearena-sdk-comm';
+import * as number from './number';
+import * as vector from 'bytearena-sdk-vector2';
+import * as comm from 'bytearena-sdk-comm';
+
+export {number, vector, comm};

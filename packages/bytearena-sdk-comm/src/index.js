@@ -24,7 +24,7 @@ export const connect = (port, host, agentid) => {
                 .on('line', function(data) {
 
                     const json = data.toString();
-                    const decoded = JSON.parse(json);                
+                    const decoded = JSON.parse(json);
 
                     if('Method' in decoded) {
                         // Request emitted by server; not handling session yet (one way messaging, like pubsub)
@@ -61,7 +61,7 @@ export const connect = (port, host, agentid) => {
                 onTick(cbk) {
                     cbktickrequested = cbk;
                 }
-            });            
+            });
         });
     }
 

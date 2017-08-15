@@ -1,0 +1,20 @@
+{
+  "name": "bytearena-sdk",
+  "version": "0.0.5",
+  "description": "Byte Arena SDK",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ByteArena/bytearena-sdk-javascript.git"
+  },
+  "author": "Byte Arena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ByteArena/bytearena-sdk-javascript/issues"
+  },
+  "homepage": "https://github.com/ByteArena/bytearena-sdk-javascript",
+  "dependencies": {
+    "bytearena-sdk-comm": "0.0.2-2",
+    "bytearena-sdk-vector2": "^0.0.5"
+  }
+}

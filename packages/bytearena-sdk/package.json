@@ -1,6 +1,6 @@
 {
   "name": "bytearena-sdk",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Byte Arena SDK",
   "main": "lib/index.js",
   "repository": {
@@ -15,6 +15,6 @@
   "homepage": "https://github.com/ByteArena/bytearena-sdk-javascript",
   "dependencies": {
     "bytearena-sdk-comm": "0.0.2-2",
-    "bytearena-sdk-vector2": "^0.0.4"
+    "bytearena-sdk-vector2": "^0.0.5"
   }
 }

@@ -25,4 +25,6 @@ for D in ./packages/*; do
     --out-dir "${D}/lib" \
     --quiet
 
+  # Generate documentation
+  ./node_modules/.bin/jsdoc2md "${D}/src/*" > "${D}/README.md"
 done

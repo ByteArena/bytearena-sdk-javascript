@@ -13,7 +13,7 @@
     "url": "https://github.com/ByteArena/bytearena-sdk-javascript/issues"
   },
   "homepage": "https://github.com/ByteArena/bytearena-sdk-javascript",
-  "devDependencies": {
+  "dependencies": {
     "bytearena-sdk-comm": "0.0.2-2",
     "bytearena-sdk-vector2": "0.0.2-2"
   }

@@ -1,4 +1,4 @@
-import { isZero } from './number';
+import { isZero } from 'bytearena-sdk-math';
 
 export class Vector2 {
 

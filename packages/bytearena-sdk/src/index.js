@@ -1,4 +1,4 @@
-import * as number from './number';
+import * as number from 'bytearena-sdk-math';
 import * as vector from 'bytearena-sdk-vector2';
 import * as comm from 'bytearena-sdk-comm';
 

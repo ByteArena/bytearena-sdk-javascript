@@ -5,22 +5,25 @@ import fs from 'fs';
 const pkge = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
 export default {
-    "plugins": [
-        babel({
-            "exclude": "node_modules/**",
-            "presets": [
-                ["es2015", { "modules": false }]
-            ]
-        }),
-        babili({
-            "comments": false,
-            "banner": "/* ByteArena Javascript SDK v" + pkge.version + "; License " + pkge.license + "; " + pkge.homepage + " */",
-            "sourcemap": false
-        })
-    ],
-    "entry": 'src/browser/index.js',
-    "dest": "lib/browser/bytearenasdk.min.js",
-    "format": "umd",
-    "moduleName": "bytearenasdk",
-    "sourceMap": true
-}
+  plugins: [
+    babel({
+      exclude: 'node_modules/**',
+      presets: [['es2015', { modules: false }]],
+    }),
+    babili({
+      comments: false,
+      banner: '/* ByteArena Javascript SDK v' + pkge.version +
+        '; License ' +
+        pkge.license +
+        '; ' +
+        pkge.homepage +
+        ' */',
+      sourcemap: false,
+    }),
+  ],
+  entry: 'src/browser/index.js',
+  dest: 'lib/browser/bytearenasdk.min.js',
+  format: 'umd',
+  moduleName: 'bytearenasdk',
+  sourceMap: true,
+};

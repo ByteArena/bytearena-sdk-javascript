@@ -1,6 +1,6 @@
 {
   "name": "bytearena-sdk-comm",
-  "version": "0.0.2-2",
+  "version": "0.0.6",
   "description": "Byte Arena SDK",
   "main": "lib/index.js",
   "repository": {

@@ -1,6 +1,11 @@
 import net from 'net';
 import readline from 'readline';
 
+export const version = {
+  PROTOCOL_VERSION_CLEAR_BETA: "clear_beta",
+  PROTOCOL_VERSION_CLEAR_V1: "clear_v1",
+};
+
 export const connect = (port, host, agentid) => {
 
     const wrapInTransport = (type, payload) => ({

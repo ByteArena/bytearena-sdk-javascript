@@ -1,6 +1,5 @@
 build:
 	./scripts/build.sh
 
-publish:
-	npm run build
+publish: build
 	lerna publish

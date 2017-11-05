@@ -27,7 +27,7 @@ export const connect = (port, host, agentid) => {
         }
 
         const json = JSON.stringify(wrapInTransport("Handshake", {
-            version: PROTOCOL_VERSION_CLEAR_BETA,
+            version: PROTOCOL_VERSION_CLEAR_BETA
         }));
 
         client.write(json + "\n", "utf8", function() {

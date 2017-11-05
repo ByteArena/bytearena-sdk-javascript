@@ -1,6 +1,6 @@
 {
   "name": "bytearena-sdk-vector2",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Byte Arena SDK",
   "main": "lib/index.js",
   "repository": {

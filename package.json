@@ -7,9 +7,5 @@
     "jsdoc-to-markdown": "^3.0.0",
     "lerna": "^2.0.0"
   },
-  "scripts": {
-    "build": "./scripts/build.sh",
-    "prepublish": "npm run --silent build"
-  },
   "dependencies": {}
 }

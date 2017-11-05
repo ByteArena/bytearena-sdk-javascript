@@ -8,7 +8,8 @@
     "lerna": "^2.0.0"
   },
   "scripts": {
-    "build": "./scripts/build.sh"
+    "build": "./scripts/build.sh",
+    "prepublish": "npm run --silent build"
   },
   "dependencies": {}
 }

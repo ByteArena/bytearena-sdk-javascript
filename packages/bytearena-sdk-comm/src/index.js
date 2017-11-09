@@ -9,9 +9,9 @@ export const version = {
 export const connect = (port, host, agentid) => {
 
     const wrapInTransport = (type, payload) => ({
-        AgentId: agentid,
-        Type: type,
-        Payload: payload,
+        agentid: agentid,
+        type: type,
+        payload: payload,
     });
 
     function onConnect(client, resolve, reject) {
@@ -19,7 +19,7 @@ export const connect = (port, host, agentid) => {
         function sendMoves(mutations) {
             return new Promise(function(resolve, reject) {
                 const json = JSON.stringify(wrapInTransport('Mutation', {
-                    Mutations: mutations
+                    mutations: mutations
                 }));
 
                 client.write(json + "\n", "utf8", resolve);
@@ -41,12 +41,12 @@ export const connect = (port, host, agentid) => {
                     const json = data.toString();
                     const decoded = JSON.parse(json);
 
-                    if('Method' in decoded) {
+                    if('method' in decoded) {
                         // Request emitted by server; not handling session yet (one way messaging, like pubsub)
-                        if(decoded.Method === 'tick') {
-                            cbktickrequested({ perception: decoded.Arguments[1], sendMoves });
+                        if(decoded.method === 'tick') {
+                            cbktickrequested({ perception: decoded.arguments[1], sendMoves });
                         } else {
-                            throw new Error('Undefined Method requested from server : ' + decoded.Method);
+                            throw new Error('Undefined method requested from server : ' + decoded.method);
                         }
                     } else {
                         throw new Error('Invalid message received from server :' + json);

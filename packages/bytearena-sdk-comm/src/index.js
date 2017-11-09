@@ -51,15 +51,16 @@ export const connect = (port, host, agentid) => {
                     } else {
                         throw new Error('Invalid message received from server :' + json);
                     }
-                })
-                .on('close', function() {
-                    // TODO: stop agent
                 });
 
             resolve({
                 onTick(cbk) {
                     cbktickrequested = cbk;
-                }
+                },
+
+                onClose(cb) {
+                    client.on("close", cb)
+                },
             });
         });
     }

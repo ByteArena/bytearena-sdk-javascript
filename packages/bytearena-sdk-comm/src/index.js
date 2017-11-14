@@ -6,6 +6,7 @@ import {sendMutations, sendHandshake, connect as transportConnect} from './trans
 import GameStream from './agent'
 
 const METHOD_PERCEPTION = 'perception'
+const METHOD_WELCOME = 'welcome'
 
 export function connect() {
   const port = process.env.PORT;
@@ -53,7 +54,10 @@ export function connect() {
 
         if(decoded.method === METHOD_PERCEPTION) {
           stream._call('perception', decoded.payload)
+        } else if(decoded.method === METHOD_WELCOME) {
+          stream._call('welcome', decoded.payload)
         }
+
       } else {
         throw new Error('Invalid message received from server :' + json);
       }

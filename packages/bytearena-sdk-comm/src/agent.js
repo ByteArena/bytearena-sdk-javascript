@@ -1,4 +1,4 @@
-const events = ['raw', 'error', 'perception', 'specs', 'end']
+const events = ['raw', 'error', 'perception', 'welcome', 'end']
 
 export default class GameStream {
   constructor(onActions) {

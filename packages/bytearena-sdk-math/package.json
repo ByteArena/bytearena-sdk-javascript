@@ -1,6 +1,6 @@
 {
   "name": "bytearena-sdk-math",
-  "version": "0.0.6",
+  "version": "0.0.13",
   "description": "Byte Arena SDK",
   "main": "lib/index.js",
   "repository": {

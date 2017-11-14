@@ -53,8 +53,6 @@ export function connect() {
 
         if(decoded.method === METHOD_PERCEPTION) {
           stream._call('perception', decoded.payload)
-        } else {
-          throw new Error('Undefined method requested from server : ' + decoded.method);
         }
       } else {
         throw new Error('Invalid message received from server :' + json);

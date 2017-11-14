@@ -5,7 +5,7 @@ import version from './versions'
 import {sendMutations, sendHandshake, connect as transportConnect} from './transport'
 import GameStream from './agent'
 
-const METHOD_TICK = 'tick'
+const METHOD_PERCEPTION = 'perception'
 
 export function connect() {
   const port = process.env.PORT;
@@ -47,10 +47,12 @@ export function connect() {
       const json = data.toString();
       const decoded = JSON.parse(json);
 
+      stream._call('raw', decoded)
+
       if('method' in decoded) {
 
-        if(decoded.method === METHOD_TICK) {
-          stream._call('perception', decoded.arguments[1])
+        if(decoded.method === METHOD_PERCEPTION) {
+          stream._call('perception', decoded.payload)
         } else {
           throw new Error('Undefined method requested from server : ' + decoded.method);
         }

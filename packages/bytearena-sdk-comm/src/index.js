@@ -2,17 +2,17 @@ import process from 'process'
 import readline from 'readline';
 
 import version from './versions'
-import {sendMutations, sendHandshake, connect} from './transport'
+import {sendMutations, sendHandshake, connect as transportConnect} from './transport'
 import GameStream from './stream'
 
 const METHOD_TICK = 'tick'
 
-export default function gameServerConnect() {
+export function connect() {
   const port = process.env.PORT;
   const host = process.env.HOST;
   const agentid = process.env.AGENTID;
 
-  const socket = connect(host, port)
+  const socket = transportConnect(host, port)
   const stream = new GameStream()
 
   socket.on('error', (err) => {

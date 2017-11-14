@@ -1,8 +1,10 @@
 const events = ['error', 'perception', 'specs', 'end']
 
 export default class GameStream {
-  constructor() {
+  constructor(onActions) {
     this._callbacks = {};
+
+    this._callbacks['actions'] = onActions;
   }
 
   on(key, fn) {
@@ -29,5 +31,13 @@ export default class GameStream {
 
   _has(key) {
     return typeof this._callbacks[key] === 'function';
+  }
+
+  takeActions(actions) {
+    if (typeof actions !== 'object' || typeof actions.length === 'undefined') {
+      throw new Error('actions must be an array')
+    }
+
+    this._call('actions', actions)
   }
 }

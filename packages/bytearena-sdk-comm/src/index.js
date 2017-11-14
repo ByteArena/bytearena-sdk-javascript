@@ -13,7 +13,12 @@ export function connect() {
   const agentid = process.env.AGENTID;
 
   const socket = transportConnect(host, port)
-  const stream = new GameStream()
+
+  function onActions(batch) {
+    sendMutations(socket, agentid, batch)
+  }
+
+  const stream = new GameStream(onActions)
 
   socket.on('error', (err) => {
 
@@ -45,7 +50,7 @@ export function connect() {
       if('method' in decoded) {
 
         if(decoded.method === METHOD_TICK) {
-          stream._call('perception', decoded.arguments[1], (mutations) => sendMutations(socket, agentid, mutations))
+          stream._call('perception', decoded.arguments[1])
         } else {
           throw new Error('Undefined method requested from server : ' + decoded.method);
         }

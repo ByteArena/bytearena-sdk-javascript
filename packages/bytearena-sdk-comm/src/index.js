@@ -3,7 +3,7 @@ import readline from 'readline';
 
 import version from './versions'
 import {sendMutations, sendHandshake, connect as transportConnect} from './transport'
-import GameStream from './stream'
+import GameStream from './agent'
 
 const METHOD_TICK = 'tick'
 

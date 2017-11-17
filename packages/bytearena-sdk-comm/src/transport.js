@@ -7,8 +7,8 @@ const METHOD_MUTATION = 'Mutation';
 
 const socket = new net.Socket();
 
-export function wrapInTransport(agentid, type, payload) {
-  return { agentid, type, payload }
+export function wrapInTransport(agentid, method, payload) {
+  return { agentid, method, payload }
 };
 
 export function connect(host, port) {

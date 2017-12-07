@@ -3,7 +3,7 @@ import net from 'net';
 const NEW_LINE = '\n';
 const ENCODING = 'utf8';
 const METHOD_HANDSHAKE = 'Handshake';
-const METHOD_MUTATION = 'Mutation';
+const METHOD_ACTIONS = 'Actions';
 
 const socket = new net.Socket();
 
@@ -21,8 +21,8 @@ export function sendHandshake(client, agentid, version) {
   client.write(payload + NEW_LINE, ENCODING)
 }
 
-export function sendMutations(client, agentid, mutations) {
-  const json = JSON.stringify(wrapInTransport(agentid, METHOD_MUTATION, {mutations}));
+export function sendActions(client, agentid, actions) {
+  const json = JSON.stringify(wrapInTransport(agentid, METHOD_ACTIONS, {actions}));
 
   client.write(json + NEW_LINE, ENCODING);
 }

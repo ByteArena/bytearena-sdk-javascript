@@ -12,5 +12,11 @@
   "bugs": {
     "url": "https://github.com/ByteArena/bytearena-sdk-javascript/issues"
   },
-  "homepage": "https://github.com/ByteArena/bytearena-sdk-javascript"
+  "homepage": "https://github.com/ByteArena/bytearena-sdk-javascript",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
 }

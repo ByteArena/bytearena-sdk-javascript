@@ -2,8 +2,8 @@ import process from 'process'
 import readline from 'readline';
 
 import version from './versions'
-import {sendMutations, sendHandshake, connect as transportConnect} from './transport'
-import GameStream from './agent'
+import {sendActions, sendHandshake, connect as transportConnect} from './transport'
+import Agent from './agent'
 
 const METHOD_PERCEPTION = 'perception'
 const METHOD_WELCOME = 'welcome'
@@ -16,10 +16,10 @@ export function connect() {
   const socket = transportConnect(host, port)
 
   function onActions(batch) {
-    sendMutations(socket, agentid, batch)
+    sendActions(socket, agentid, batch)
   }
 
-  const stream = new GameStream(onActions)
+  const stream = new Agent(onActions)
 
   socket.on('error', (err) => {
 

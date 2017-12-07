@@ -9,6 +9,12 @@ describe('Agent', () => {
     assert(typeof Agent.constructor === 'function');
   });
 
+  it('should have a callable on method', () => {
+    const agent = new Agent(onActions);
+
+    assert(typeof agent.on === 'function');
+  });
+
   it('should have a callable do method', () => {
     const agent = new Agent(onActions);
 

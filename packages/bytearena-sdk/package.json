@@ -15,6 +15,8 @@
   "homepage": "https://github.com/ByteArena/bytearena-sdk-javascript",
   "dependencies": {
     "bytearena-sdk-comm": "^0.2.1-1",
-    "bytearena-sdk-vector2": "^0.2.1-1"
+    "bytearena-sdk-vector2": "^0.2.1-1",
+    "bytearena-sdk-math": "^0.2.1-1",
+    "bytearena-sdk-highlevel": "^0.2.1-1"
   }
 }

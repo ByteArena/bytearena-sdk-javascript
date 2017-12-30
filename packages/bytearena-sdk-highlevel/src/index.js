@@ -1,4 +1,4 @@
-import * as agent from "./agents";
+import * as agent from "./agent";
 
 export default {
     agent,

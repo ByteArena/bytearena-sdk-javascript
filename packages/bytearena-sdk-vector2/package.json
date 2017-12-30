@@ -1,6 +1,6 @@
 {
   "name": "bytearena-sdk-vector2",
-  "version": "0.2.1-1",
+  "version": "0.2.1-2",
   "description": "Byte Arena SDK",
   "main": "lib/index.js",
   "repository": {
@@ -14,6 +14,6 @@
   },
   "homepage": "https://github.com/ByteArena/bytearena-sdk-javascript",
   "dependencies": {
-    "bytearena-sdk-math": "^0.2.1-1"
+    "bytearena-sdk-math": "^0.2.1-2"
   }
 }
